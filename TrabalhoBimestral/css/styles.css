@@ -1,0 +1,299 @@
+/* Reset e estilos gerais - Tema Escuro */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #e0e0e0;
+  background-color: #121212;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  color: #bb86fc; /* Cor primária do Material Design Dark Theme */
+}
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  color: #888;
+  padding: 20px 0;
+  border-top: 1px solid #333;
+}
+
+/* Cards da página inicial */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #333;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card h2 {
+  color: #bb86fc;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #b0b0b0;
+  margin-bottom: 20px;
+}
+
+/* Botões */
+.btn {
+  display: inline-block;
+  background-color: #bb86fc;
+  color: #121212;
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+  background-color: #a370db;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+}
+
+.btn-secondary:hover {
+  background-color: #4a4a4a;
+}
+
+/* Formulários */
+.form-card {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #bb86fc;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #e0e0e0;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #bb86fc;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(187, 134, 252, 0.3);
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+/* Tabelas */
+.table-container {
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  overflow-x: auto;
+  border: 1px solid #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+table th {
+  background-color: #2c2c2c;
+  color: #bb86fc;
+  font-weight: bold;
+}
+
+table tr:hover {
+  background-color: #2a2a2a;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #121212;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.edit {
+  background-color: #03dac6; /* Cor secundária do Material Design Dark Theme */
+}
+
+.edit:hover {
+  background-color: #00b3a6;
+}
+
+.delete {
+  background-color: #cf6679; /* Cor de erro do Material Design Dark Theme */
+}
+
+.delete:hover {
+  background-color: #b55464;
+}
+
+/* Relatório */
+.report-info {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #2c2c2c;
+  border-radius: 4px;
+  border-left: 4px solid #bb86fc;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .card-container {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .form-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
+
+/* Estilos específicos para o tema escuro */
+::placeholder {
+  color: #888;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.8);
+}
+
+/* Estilização de scrollbar para navegadores webkit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.alert {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.alert.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.no-data {
+  text-align: center;
+  font-style: italic;
+  color: #888;
+  font-size: 1.1em;
+  padding: 10px 0;
+}
