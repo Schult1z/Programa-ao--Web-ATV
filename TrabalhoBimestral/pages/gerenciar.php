@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
 
 // Recuperar os funcionários do banco de dados
 try {
-    $sql = "SELECT * FROM funcionarios";
+    $sql = "SELECT * FROM funcionarios ORDER BY nome";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     $funcionarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
