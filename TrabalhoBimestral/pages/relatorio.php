@@ -108,7 +108,7 @@ function calcularBonus($salario, $data_nascimento, $mes_atual) {
       </main>
 
       <footer>
-        <p>&copy; 2025 Sistema de Gerenciamento</p>
+        <p>&copy; 2025 Sistema de Gerenciamento de Funcionários</p>
       </footer>
     </div>
   </body>
