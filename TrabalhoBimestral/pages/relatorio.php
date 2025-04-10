@@ -31,8 +31,8 @@ try {
 }
 
 // Função para calcular o bônus de 10% do salário
-function calcularBonus($salario, $data_nascimento, $mes_atual) {
-    $mes_nascimento = date("m", strtotime($data_nascimento));
+function calcularBonus($salario, $data_ncto, $mes_atual) {
+    $mes_nascimento = date("m", strtotime($data_ncto));
     // Verifica se o aniversário é no mês atual
     if ($mes_nascimento == $mes_atual) {
         return $salario * 0.10; // Bônus de 10%
@@ -89,13 +89,13 @@ function calcularBonus($salario, $data_nascimento, $mes_atual) {
                 <?php
                 // Exibir os funcionários na tabela
                 foreach ($funcionarios as $funcionario) {
-                    $bonus = calcularBonus($funcionario['salario'], $funcionario['data_nascimento'], $mes_atual);
+                    $bonus = calcularBonus($funcionario['salario'], $funcionario['data_ncto'], $mes_atual);
                     $total = $funcionario['salario'] + $bonus;
                 ?>
                 <tr>
                   <td><?php echo $funcionario['nome']; ?></td>
                   <td><?php echo $funcionario['cpf']; ?></td>
-                  <td><?php echo date("d/m/Y", strtotime($funcionario['data_nascimento'])); ?></td>
+                  <td><?php echo date("d/m/Y", strtotime($funcionario['data_ncto'])); ?></td>
                   <td><?php echo number_format($funcionario['salario'], 2, ',', '.'); ?></td>
                   <td><?php echo $bonus > 0 ? number_format($bonus, 2, ',', '.') : '-'; ?></td>
                   <td><?php echo number_format($total, 2, ',', '.'); ?></td>

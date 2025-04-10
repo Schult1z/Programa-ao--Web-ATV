@@ -8,14 +8,14 @@ $tipo = '';
 $funcionarios = [];
 
 // Verificar se foi solicitado a exclusão de um funcionário
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_GET['matricula'])) {
+    $matricula = $_GET['matricula'];
 
     try {
         // Preparar o comando SQL para excluir o funcionário
-        $sql = "DELETE FROM funcionarios WHERE id = :id";
+        $sql = "DELETE FROM funcionarios WHERE matricula = :matricula";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':matricula', $matricula, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
             // Exibir mensagem de sucesso
@@ -91,11 +91,11 @@ try {
                 <tr>
                   <td><?php echo $funcionario['nome']; ?></td>
                   <td><?php echo $funcionario['cpf']; ?></td>
-                  <td><?php echo date("d/m/Y", strtotime($funcionario['data_nascimento'])); ?></td>
+                  <td><?php echo date("d/m/Y", strtotime($funcionario['data_ncto'])); ?></td>
                   <td>R$ <?php echo number_format($funcionario['salario'], 2, ',', '.'); ?></td>
                   <td class="actions">
-                    <a href="editar.php?id=<?php echo $funcionario['id']; ?>" class="btn-icon edit">Editar</a>
-                    <a href="gerenciar.php?id=<?php echo $funcionario['id']; ?>" class="btn-icon delete" onclick="return confirm('Você tem certeza que deseja excluir este funcionário?')">Excluir</a>
+                    <a href="editar.php?matricula=<?php echo $funcionario['matricula']; ?>" class="btn-icon edit">Editar</a>
+                    <a href="gerenciar.php?matricula=<?php echo $funcionario['matricula']; ?>" class="btn-icon delete" onclick="return confirm('Você tem certeza que deseja excluir este funcionário?')">Excluir</a>
                   </td>
                 </tr>
                 <?php } ?>

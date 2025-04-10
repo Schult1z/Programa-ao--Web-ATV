@@ -9,7 +9,7 @@ $tipo = '';
 // Inicializar variáveis para manter os dados no formulário
 $nome = '';
 $cpf = '';
-$data_nascimento = '';
+$data_ncto = '';
 $salario = '';
 
 // Verificar se o formulário foi enviado
@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Capturar os dados do formulário
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
-    $data_nascimento = $_POST['data_nascimento'];
+    $data_ncto = $_POST['data_ncto'];
     $salario = $_POST['salario'];
 
     try {
@@ -33,15 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $tipo = "error";
         } else {
             // Caso o CPF não exista, inserir o novo funcionário
-            $sql = "INSERT INTO funcionarios (nome, cpf, data_nascimento, salario) 
-                    VALUES (:nome, :cpf, :data_nascimento, :salario)";
+            $sql = "INSERT INTO funcionarios (nome, cpf, data_ncto, salario) 
+                    VALUES (:nome, :cpf, :data_ncto, :salario)";
             
             // Verifique se a variável $pdo foi definida corretamente no arquivo de conexão
             if (isset($pdo)) {
                 $stmt = $pdo->prepare($sql);
                 $stmt->bindParam(':nome', $nome);
                 $stmt->bindParam(':cpf', $cpf);
-                $stmt->bindParam(':data_nascimento', $data_nascimento);
+                $stmt->bindParam(':data_ncto', $data_ncto);
                 $stmt->bindParam(':salario', $salario);
 
                 // Executar a inserção
@@ -103,8 +103,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
 
             <div class="form-group">
-              <label for="data_nascimento">Data de Nascimento:</label>
-              <input type="date" id="data_nascimento" name="data_nascimento" value="<?php echo $data_nascimento; ?>" required />
+              <label for="data_ncto">Data de Nascimento:</label>
+              <input type="date" id="data_ncto" name="data_ncto" value="<?php echo $data_ncto; ?>" required />
             </div>
 
             <div class="form-group">

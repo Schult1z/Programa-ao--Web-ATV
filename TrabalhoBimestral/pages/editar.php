@@ -7,15 +7,15 @@ $mensagem = '';
 $tipo = '';
 $funcionario = null;
 
-// Verificar se foi passado o id do funcionário para edição
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+// Verificar se foi passado a matricula do funcionário para edição
+if (isset($_GET['matricula'])) {
+    $matricula = $_GET['matricula'];
 
     try {
         // Recuperar os dados do funcionário para preencher o formulário
-        $sql = "SELECT * FROM funcionarios WHERE id = :id";
+        $sql = "SELECT * FROM funcionarios WHERE matricula = :matricula";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':matricula', $matricula, PDO::PARAM_INT);
         $stmt->execute();
         $funcionario = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -35,18 +35,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Obter os dados do formulário
     $nome = $_POST['nome'];
     $cpf = $_POST['cpf'];
-    $data_nascimento = $_POST['data_nascimento'];
+    $data_ncto = $_POST['data_ncto'];
     $salario = $_POST['salario'];
 
     try {
         // Atualizar os dados do funcionário no banco
-        $sql = "UPDATE funcionarios SET nome = :nome, cpf = :cpf, data_nascimento = :data_nascimento, salario = :salario WHERE id = :id";
+        $sql = "UPDATE funcionarios SET nome = :nome, cpf = :cpf, data_ncto = :data_ncto, salario = :salario WHERE matricula = :matricula";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':nome', $nome);
         $stmt->bindParam(':cpf', $cpf);
-        $stmt->bindParam(':data_nascimento', $data_nascimento);
+        $stmt->bindParam(':data_ncto', $data_ncto);
         $stmt->bindParam(':salario', $salario);
-        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':matricula', $matricula);
 
         if ($stmt->execute()) {
             $mensagem = "Funcionário atualizado com sucesso!";
@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <div class="form-card">
           <?php if ($funcionario): ?>
-          <form action="editar.php?id=<?php echo $funcionario['id']; ?>" method="POST">
+          <form action="editar.php?matricula=<?php echo $funcionario['matricula']; ?>" method="POST">
             <div class="form-group">
               <label for="nome">Nome:</label>
               <input
@@ -111,12 +111,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
 
             <div class="form-group">
-              <label for="data_nascimento">Data de Nascimento:</label>
+              <label for="data_ncto">Data de Nascimento:</label>
               <input
                 type="date"
-                id="data_nascimento"
-                name="data_nascimento"
-                value="<?php echo date("Y-m-d", strtotime($funcionario['data_nascimento'])); ?>"
+                id="data_ncto"
+                name="data_ncto"
+                value="<?php echo date("Y-m-d", strtotime($funcionario['data_ncto'])); ?>"
                 required
               />
             </div>
